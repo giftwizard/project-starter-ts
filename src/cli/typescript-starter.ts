@@ -162,18 +162,6 @@ export async function typescriptStarter(
   }
   spinnerGitignore.succeed();
 
-  await replaceInFile({
-    files: join(projectPath, 'LICENSE'),
-    // cspell: disable-next-line
-    from: 'Jason Dreyzehner',
-    to: fullName,
-  });
-  await replaceInFile({
-    files: join(projectPath, 'LICENSE'),
-    from: '2017',
-    to: new Date().getUTCFullYear().toString(),
-  });
-
   const spinnerDelete = ora('Deleting unnecessary files').start();
 
   await del([
@@ -198,16 +186,6 @@ export async function typescriptStarter(
   if (!cspell) {
     del([normalizePath(join(projectPath, '.cspell.json'))]);
     if (vscode) {
-      await replaceInFile({
-        files: join(projectPath, '.vscode', 'settings.json'),
-        from: `  "cSpell.userWords": [], // only use words from .cspell.json\n`,
-        to: '',
-      });
-      await replaceInFile({
-        files: join(projectPath, '.vscode', 'settings.json'),
-        from: `  "cSpell.enabled": true,\n`,
-        to: '',
-      });
     }
   }
   if (!travis) {
@@ -222,17 +200,8 @@ export async function typescriptStarter(
   spinnerDelete.succeed();
 
   const spinnerTsconfigModule = ora('Removing traces of the CLI').start();
-  // await replaceInFile({
-  //   files: join(projectPath, 'tsconfig.module.json'),
-  //   from: /,\s+\/\/ typescript-starter:[\s\S]*"src\/cli\/\*\*\/\*\.ts"/,
-  //   to: '',
-  // });
+
   if (vscode) {
-    await replaceInFile({
-      files: join(projectPath, '.vscode', 'launch.json'),
-      from: /,[\s]*\/\/ --- cut here ---[\s\S]*]/,
-      to: ']',
-    });
   }
   spinnerTsconfigModule.succeed();
 

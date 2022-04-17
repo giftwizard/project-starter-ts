@@ -68,7 +68,6 @@
   },
   "NOTE": "These dependencies are for the CLI and will not be included when you run 'npx typescript-starter'.",
   "dependencies": {
-    "@bitauth/libauth": "^1.17.1",
     "chalk": "^4.1.0",
     "del": "^5.0.0",
     "execa": "^4.0.3",
