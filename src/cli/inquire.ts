@@ -40,7 +40,7 @@ export async function inquire(): Promise<TypescriptStarterCLIOptions> {
     message: '🚄 Will this project use npm or yarn?',
     name: 'runner',
     type: 'list',
-    default: Runner.Yarn
+    default: Runner.Yarn,
   };
 
   enum TypeDefinitions {

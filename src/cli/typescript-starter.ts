@@ -185,7 +185,6 @@ export async function typescriptStarter(
   }
   if (!cspell) {
     del([normalizePath(join(projectPath, '.cspell.json'))]);
-
   }
   if (!travis) {
     del([normalizePath(join(projectPath, '.travis.yml'))]);
