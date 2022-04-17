@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/bitjson/typescript-starter/compare/v3.1.2...v0.0.2) (2022-04-17)
+
 ### [3.1.2](https://github.com/bitjson/typescript-starter/compare/v3.1.1...v3.1.2) (2020-09-08)
 
 
