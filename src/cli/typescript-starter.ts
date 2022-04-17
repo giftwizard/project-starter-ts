@@ -185,8 +185,7 @@ export async function typescriptStarter(
   }
   if (!cspell) {
     del([normalizePath(join(projectPath, '.cspell.json'))]);
-    if (vscode) {
-    }
+
   }
   if (!travis) {
     del([normalizePath(join(projectPath, '.travis.yml'))]);
@@ -201,8 +200,6 @@ export async function typescriptStarter(
 
   const spinnerTsconfigModule = ora('Removing traces of the CLI').start();
 
-  if (vscode) {
-  }
   spinnerTsconfigModule.succeed();
 
   const spinnerReadme = ora('Creating README.md').start();
