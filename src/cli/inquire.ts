@@ -41,6 +41,7 @@ export async function inquire(): Promise<TypescriptStarterCLIOptions> {
     message: '🚄 Will this project use npm or yarn?',
     name: 'runner',
     type: 'list',
+    default: Runner.Yarn
   };
 
   enum TypeDefinitions {
@@ -72,6 +73,7 @@ export async function inquire(): Promise<TypescriptStarterCLIOptions> {
     message: '📚 Which global type definitions do you want to include?',
     name: 'definitions',
     type: 'list',
+    default: TypeDefinitions.node,
     when: (answers) => answers.type === ProjectType.Library,
   };
 
@@ -91,41 +93,41 @@ export async function inquire(): Promise<TypescriptStarterCLIOptions> {
         name: 'Enable stricter type-checking',
         value: Extras.strict,
       },
-      {
-        checked: true,
-        name: 'Enable eslint-plugin-functional',
-        value: Extras.functional,
-      },
-      {
-        checked: true,
-        name: 'Include .editorconfig',
-        value: Extras.editorconfig,
-      },
-      {
-        checked: true,
-        name: 'Include cspell',
-        value: Extras.cspell,
-      },
+      // {
+      //   checked: true,
+      //   name: 'Enable eslint-plugin-functional',
+      //   value: Extras.functional,
+      // },
+      // {
+      //   checked: true,
+      //   name: 'Include .editorconfig',
+      //   value: Extras.editorconfig,
+      // },
+      // {
+      //   checked: true,
+      //   name: 'Include cspell',
+      //   value: Extras.cspell,
+      // },
       {
         checked: true,
         name: 'Include VS Code debugging config',
         value: Extras.vscode,
       },
-      {
-        checked: true,
-        name: 'Include CircleCI config',
-        value: Extras.circleci,
-      },
-      {
-        checked: false,
-        name: 'Include Appveyor (Windows-based CI) config',
-        value: Extras.appveyor,
-      },
-      {
-        checked: false,
-        name: 'Include Travis CI config',
-        value: Extras.travis,
-      },
+      // {
+      //   checked: true,
+      //   name: 'Include CircleCI config',
+      //   value: Extras.circleci,
+      // },
+      // {
+      //   checked: false,
+      //   name: 'Include Appveyor (Windows-based CI) config',
+      //   value: Extras.appveyor,
+      // },
+      // {
+      //   checked: false,
+      //   name: 'Include Travis CI config',
+      //   value: Extras.travis,
+      // },
     ],
     message: '🚀 More fun stuff:',
     name: 'extras',

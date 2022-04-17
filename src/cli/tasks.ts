@@ -46,7 +46,7 @@ export const cloneRepo = (
       cwd: workingDirectory,
       stdio: suppressOutput ? 'pipe' : 'inherit',
     });
-  } catch (err) {
+  } catch (err: any) {
     if (err.exitCodeName === 'ENOENT') {
       // eslint-disable-next-line functional/no-throw-statement
       throw new Error(`
