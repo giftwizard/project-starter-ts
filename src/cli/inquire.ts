@@ -30,7 +30,6 @@ export async function inquire(): Promise<TypescriptStarterCLIOptions> {
     message: '💬 Enter the package description:',
     name: 'description',
     type: 'input',
-    validate: (answer: string) => answer.length > 0,
   };
 
   const runnerQuestion: DistinctQuestion = {

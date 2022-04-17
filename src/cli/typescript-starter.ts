@@ -224,11 +224,11 @@ export async function typescriptStarter(
   spinnerDelete.succeed();
 
   const spinnerTsconfigModule = ora('Removing traces of the CLI').start();
-  await replaceInFile({
-    files: join(projectPath, 'tsconfig.module.json'),
-    from: /,\s+\/\/ typescript-starter:[\s\S]*"src\/cli\/\*\*\/\*\.ts"/,
-    to: '',
-  });
+  // await replaceInFile({
+  //   files: join(projectPath, 'tsconfig.module.json'),
+  //   from: /,\s+\/\/ typescript-starter:[\s\S]*"src\/cli\/\*\*\/\*\.ts"/,
+  //   to: '',
+  // });
   if (vscode) {
     await replaceInFile({
       files: join(projectPath, '.vscode', 'launch.json'),

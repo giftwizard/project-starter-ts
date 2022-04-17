@@ -153,7 +153,7 @@ export const install = (spawner: typeof execa) => async (
  * not yet released, may cause unexpected results.)
  * @param starterVersion the current version of this CLI
  */
-export const getRepoInfo = (starterVersion: string) => {
+export const getRepoInfo = () => {
   return process.env.TYPESCRIPT_STARTER_REPO_URL
     ? {
         branch: process.env.TYPESCRIPT_STARTER_REPO_BRANCH
@@ -162,8 +162,8 @@ export const getRepoInfo = (starterVersion: string) => {
         repo: process.env.TYPESCRIPT_STARTER_REPO_URL,
       }
     : {
-        branch: `v${starterVersion}`,
-        repo: 'https://github.com/bitjson/typescript-starter.git',
+        branch: `master`,
+        repo: 'https://github.com/giftwizard/project-ts-starter',
       };
 };
 
@@ -198,7 +198,7 @@ export const addInferredOptions = async (
     email: gitEmail,
     fullName: gitName,
     githubUsername: username,
-    repoInfo: getRepoInfo(userOptions.starterVersion),
+    repoInfo: getRepoInfo(),
     workingDirectory: process.cwd(),
   };
   return {
