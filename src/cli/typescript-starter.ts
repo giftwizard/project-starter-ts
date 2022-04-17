@@ -162,7 +162,6 @@ export async function typescriptStarter(
   }
   spinnerGitignore.succeed();
 
-  const spinnerLicense = ora('Updating LICENSE').start();
   await replaceInFile({
     files: join(projectPath, 'LICENSE'),
     // cspell: disable-next-line
@@ -174,7 +173,6 @@ export async function typescriptStarter(
     from: '2017',
     to: new Date().getUTCFullYear().toString(),
   });
-  spinnerLicense.succeed();
 
   const spinnerDelete = ora('Deleting unnecessary files').start();
 

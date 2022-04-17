@@ -153,7 +153,7 @@ export const install = (spawner: typeof execa) => async (
  * not yet released, may cause unexpected results.)
  * @param starterVersion the current version of this CLI
  */
-export const getRepoInfo = () => {
+export const getRepoInfo = (_starterVersion?: string) => {
   return process.env.TYPESCRIPT_STARTER_REPO_URL
     ? {
         branch: process.env.TYPESCRIPT_STARTER_REPO_BRANCH
