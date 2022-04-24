@@ -203,19 +203,12 @@ export const addInferredOptions = async (
   };
   return {
     ...inferredOptions,
-    appveyor: userOptions.appveyor,
-    circleci: userOptions.circleci,
-    cspell: userOptions.cspell,
     description: userOptions.description,
     domDefinitions: userOptions.domDefinitions,
-    editorconfig: userOptions.editorconfig,
-    functional: userOptions.functional,
     install: userOptions.install,
     nodeDefinitions: userOptions.nodeDefinitions,
     projectName: userOptions.projectName,
     runner: userOptions.runner,
-    strict: userOptions.strict,
-    travis: userOptions.travis,
     vscode: userOptions.vscode,
   };
 };

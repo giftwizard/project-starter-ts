@@ -77,21 +77,10 @@ export async function inquire(): Promise<TypescriptStarterCLIOptions> {
   };
 
   enum Extras {
-    appveyor = 'appveyor',
-    circleci = 'circleci',
-    cspell = 'cspell',
-    editorconfig = 'editorconfig',
-    functional = 'functional',
-    strict = 'strict',
-    travis = 'travis',
     vscode = 'vscode',
   }
   const extrasQuestion: DistinctQuestion = {
     choices: [
-      {
-        name: 'Enable stricter type-checking',
-        value: Extras.strict,
-      },
       {
         checked: true,
         name: 'Include VS Code debugging config',
@@ -127,17 +116,12 @@ export async function inquire(): Promise<TypescriptStarterCLIOptions> {
       readonly type: ProjectType;
     };
     return {
-      appveyor: extras.includes(Extras.appveyor),
-      circleci: extras.includes(Extras.circleci),
-      cspell: extras.includes(Extras.cspell),
       description,
       domDefinitions: definitions
         ? [TypeDefinitions.dom, TypeDefinitions.nodeAndDom].includes(
             definitions
           )
         : false,
-      editorconfig: extras.includes(Extras.editorconfig),
-      functional: extras.includes(Extras.functional),
       install: true,
       nodeDefinitions: definitions
         ? [TypeDefinitions.node, TypeDefinitions.nodeAndDom].includes(
@@ -146,8 +130,6 @@ export async function inquire(): Promise<TypescriptStarterCLIOptions> {
         : type === ProjectType.Node,
       projectName,
       runner,
-      strict: extras.includes(Extras.strict),
-      travis: extras.includes(Extras.travis),
       vscode: extras.includes(Extras.vscode),
     };
   });

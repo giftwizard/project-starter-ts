@@ -122,20 +122,13 @@ export async function checkArgs(): Promise<TypescriptStarterArgsOptions> {
   }
 
   return {
-    appveyor: cli.flags.appveyor,
-    circleci: cli.flags.circleci,
-    cspell: cli.flags.cspell,
     description: cli.flags.description,
     domDefinitions: cli.flags.dom,
-    editorconfig: cli.flags.editorconfig,
-    functional: cli.flags.functional,
     install: cli.flags.install,
     nodeDefinitions: cli.flags.node,
     projectName: input,
     runner: cli.flags.yarn ? Runner.Yarn : Runner.Npm,
     starterVersion: version,
-    strict: cli.flags.strict,
-    travis: cli.flags.travis,
     vscode: cli.flags.vscode,
   };
 }

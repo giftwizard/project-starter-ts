@@ -21,23 +21,16 @@ const writePackageJson = (path: string, pkg: unknown) => {
 
 export async function typescriptStarter(
   {
-    appveyor,
-    circleci,
-    cspell,
     description,
     domDefinitions,
-    editorconfig,
     email,
     fullName,
     githubUsername,
-    functional,
     install,
     nodeDefinitions,
     projectName,
     repoInfo,
     runner,
-    strict,
-    travis,
     vscode,
     workingDirectory,
   }: TypescriptStarterOptions,
@@ -64,11 +57,9 @@ export async function typescriptStarter(
     '@typescript-eslint/eslint-plugin',
     '@typescript-eslint/parser',
     'ava',
-    'cz-conventional-changelog',
     'eslint',
     'eslint-config-prettier',
     'eslint-plugin-eslint-comments',
-    ...(functional ? ['eslint-plugin-functional'] : []),
     'eslint-plugin-import',
     'gh-pages',
     'npm-run-all',
@@ -105,7 +96,6 @@ export async function typescriptStarter(
     ...(runner === Runner.Yarn
       ? { 'reset-hard': `git clean -dfx && git reset --hard && yarn` }
       : {}),
-    ...(cspell ? {} : { 'test:spelling': undefined }),
   };
   const newPkg = {
     ...pkg,
@@ -160,27 +150,7 @@ export async function typescriptStarter(
     normalizePath(join(projectPath, 'bin')),
     normalizePath(join(projectPath, 'src', 'cli')),
   ]);
-  if (!appveyor) {
-    del([normalizePath(join(projectPath, 'appveyor.yml'))]);
-  }
-  if (!circleci) {
-    del([normalizePath(join(projectPath, '.circleci'))]);
-  } else {
-    await replaceInFile({
-      files: join(projectPath, '.circleci', 'config.yml'),
-      from: / {6}- run: npm run check-integration-tests\n/g,
-      to: '',
-    });
-  }
-  if (!cspell) {
-    del([normalizePath(join(projectPath, '.cspell.json'))]);
-  }
-  if (!travis) {
-    del([normalizePath(join(projectPath, '.travis.yml'))]);
-  }
-  if (!editorconfig) {
-    del([normalizePath(join(projectPath, '.editorconfig'))]);
-  }
+
   if (!vscode) {
     del([normalizePath(join(projectPath, '.vscode'))]);
   }
@@ -206,16 +176,6 @@ export async function typescriptStarter(
     to: description,
   });
   spinnerReadme.succeed();
-
-  if (!strict) {
-    const spinnerStrict = ora(`tsconfig: disable strict`).start();
-    await replaceInFile({
-      files: join(projectPath, 'tsconfig.json'),
-      from: '"strict": true',
-      to: '// "strict": true',
-    });
-    spinnerStrict.succeed();
-  }
 
   if (!domDefinitions) {
     const spinnerDom = ora(`tsconfig: don't include "dom" lib`).start();
@@ -260,23 +220,6 @@ export async function typescriptStarter(
       normalizePath(join(projectPath, 'src', 'lib', 'async.spec.ts')),
     ]);
     spinnerNode.succeed();
-  }
-
-  if (!functional) {
-    const spinnerEslint = ora(
-      `eslint: disable eslint-plugin-functional`
-    ).start();
-    await replaceInFile({
-      files: join(projectPath, '.eslintrc.json'),
-      from: '"plugins": ["import", "eslint-comments", "functional"]',
-      to: '"plugins": ["import", "eslint-comments"]',
-    });
-    await replaceInFile({
-      files: join(projectPath, '.eslintrc.json'),
-      from: '"plugin:functional/lite",\n',
-      to: '',
-    });
-    spinnerEslint.succeed();
   }
 
   if (install) {

@@ -10,19 +10,12 @@ export enum Runner {
 }
 
 export type TypescriptStarterCLIOptions = {
-  readonly appveyor: boolean;
-  readonly circleci: boolean;
-  readonly cspell: boolean;
   readonly description: string;
   readonly domDefinitions: boolean;
-  readonly editorconfig: boolean;
-  readonly functional: boolean;
   readonly install: boolean;
   readonly nodeDefinitions: boolean;
   readonly projectName: string;
   readonly runner: Runner;
-  readonly strict: boolean;
-  readonly travis: boolean;
   readonly vscode: boolean;
 };
 
