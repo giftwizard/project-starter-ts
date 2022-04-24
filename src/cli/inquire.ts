@@ -92,41 +92,11 @@ export async function inquire(): Promise<TypescriptStarterCLIOptions> {
         name: 'Enable stricter type-checking',
         value: Extras.strict,
       },
-      // {
-      //   checked: true,
-      //   name: 'Enable eslint-plugin-functional',
-      //   value: Extras.functional,
-      // },
-      // {
-      //   checked: true,
-      //   name: 'Include .editorconfig',
-      //   value: Extras.editorconfig,
-      // },
-      // {
-      //   checked: true,
-      //   name: 'Include cspell',
-      //   value: Extras.cspell,
-      // },
       {
         checked: true,
         name: 'Include VS Code debugging config',
         value: Extras.vscode,
       },
-      // {
-      //   checked: true,
-      //   name: 'Include CircleCI config',
-      //   value: Extras.circleci,
-      // },
-      // {
-      //   checked: false,
-      //   name: 'Include Appveyor (Windows-based CI) config',
-      //   value: Extras.appveyor,
-      // },
-      // {
-      //   checked: false,
-      //   name: 'Include Travis CI config',
-      //   value: Extras.travis,
-      // },
     ],
     message: '🚀 More fun stuff:',
     name: 'extras',

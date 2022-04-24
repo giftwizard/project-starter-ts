@@ -64,8 +64,6 @@ export async function typescriptStarter(
     '@typescript-eslint/eslint-plugin',
     '@typescript-eslint/parser',
     'ava',
-    'codecov',
-    'cspell',
     'cz-conventional-changelog',
     'eslint',
     'eslint-config-prettier',
@@ -87,7 +85,7 @@ export async function typescriptStarter(
   /**
    * dependencies to retain for Node.js applications
    */
-  const nodeKeptDeps: ReadonlyArray<string> = ['@bitauth/libauth'];
+  const nodeKeptDeps: ReadonlyArray<string> = [];
 
   const filterAllBut = (
     keep: ReadonlyArray<string>,
@@ -101,19 +99,9 @@ export async function typescriptStarter(
     );
 
   const pkg = readPackageJson(pkgPath);
-  const removeCliScripts = {
-    'check-integration-test': undefined,
-    'check-integration-test:1': undefined,
-    'check-integration-test:2': undefined,
-    'check-integration-test:3': undefined,
-    'check-integration-test:4': undefined,
-    'check-integration-test:5': undefined,
-    'check-integration-test:6': undefined,
-  };
   const scripts = {
     ...pkg.scripts,
     version: `standard-version -t ${projectName}\\@`,
-    ...removeCliScripts,
     ...(runner === Runner.Yarn
       ? { 'reset-hard': `git clean -dfx && git reset --hard && yarn` }
       : {}),
