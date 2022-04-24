@@ -112,6 +112,7 @@ export async function typescriptStarter(
   };
   const scripts = {
     ...pkg.scripts,
+    version: `standard-version -t ${projectName}\\@`,
     ...removeCliScripts,
     ...(runner === Runner.Yarn
       ? { 'reset-hard': `git clean -dfx && git reset --hard && yarn` }
