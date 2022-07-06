@@ -1,1 +1,1 @@
-`npx @giftwizard/project-ts-starter`
+`npx @giftwizard/project-starter-ts`
